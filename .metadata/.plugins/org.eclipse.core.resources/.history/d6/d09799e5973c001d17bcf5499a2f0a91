@@ -1,0 +1,113 @@
+package cn.mybatis.test;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import cn.mybatis.dao.CityMapper;
+import cn.mybatis.pojo.City;
+
+public class MybatisTest {
+	public static final Logger logger = LoggerFactory.getLogger(MybatisTest.class);
+	private SqlSessionFactory sqlSessionFactory;
+	private SqlSession sqlSession;
+    @Before
+    public void before(){
+        
+        
+      //读取mybatis配置文件
+		String resource="Mybatis.xml";
+		InputStream inputStream;
+		try {
+			//得到配置文件流inputStream
+			inputStream=Resources.getResourceAsStream(resource);
+			//根据配置信息创建会话工厂sqlSessionFactory
+			sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
+			//通过会话工厂获得SqlSession 
+			sqlSession=sqlSessionFactory.openSession();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+
+    }
+	/*
+	 * 根据id获取city对象
+	 */
+	@Test
+	public void test01() {
+		
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			  CityMapper mapper = session.getMapper(CityMapper.class);
+			  //Blog blog = mapper.selectBlog(101);
+			  City city = mapper.selectCity(2);
+			  //System.out.print(city);
+			  logger.debug(city.toString());
+			  
+			}
+		
+	}
+	/*
+	 * city对象个数
+	 */
+	@Test
+	public void test02() {
+		
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			  CityMapper mapper = session.getMapper(CityMapper.class);
+			  //Blog blog = mapper.selectBlog(101);
+			  long count = mapper.cityCount();
+			  System.out.print(count);
+			 
+			  
+			}
+		
+	}
+	/*
+	 * insert
+	 */
+	@Test
+	public void test03() {
+		
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			  CityMapper mapper = session.getMapper(CityMapper.class);
+			  City city = new City();
+			  //city.setID(5000);
+			  city.setName("suya");
+			  city.setCountryCode("CHN");
+			  city.setDistrict("sunya");
+			  city.setPopulation(123456);
+			  Integer result =mapper.cityInsert(city);
+			  session.commit();
+			  System.out.print(result);
+			}
+		
+	}
+	/*
+	 * update
+	 */
+	@Test
+	public void test04() {
+		
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			  CityMapper mapper = session.getMapper(CityMapper.class);
+			  City city = new City();
+			  city.setId(5000);
+			  city.setName("sunya");
+			  Integer result =mapper.cityUpdate(city);
+			  session.commit();
+			  System.out.print(result);
+			}
+		
+	}
+	
+
+
+}

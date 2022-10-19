@@ -1,0 +1,42 @@
+
+<configuration>  
+  
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">  
+    <encoder>  
+      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>  
+    </encoder>  
+  </appender>  
+  <logger name="cn.mybatis.dao">
+	  <level value="debug"/>
+  </logger>
+  <root level="INFO">  
+    <appender-ref ref="STDOUT" />  
+  </root>  
+</configuration>  
+
+<!-- 
+  日志总结
+  1，导入日志的jar包
+     slf4j（日志门面） logback
+  2，设定logback.xml文件
+     上面的是在控制台输出
+     下面的是在文件中输出
+ -->
+<!-- 
+<configuration>  
+  
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">  
+    <file>testFile.log</file>  
+    <append>true</append>  
+    <encoder>  
+      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>  
+    </encoder>  
+  </appender>  
+  <logger name="cn.mybatis.dao">
+	  <level value="debug"/>
+  </logger>        
+  <root level="INFO">  
+    <appender-ref ref="FILE" />  
+  </root>  
+</configuration>  
+ -->

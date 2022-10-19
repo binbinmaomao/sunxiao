@@ -1,0 +1,21 @@
+145  [main] DEBUG o.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+218  [main] DEBUG o.a.i.d.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+218  [main] DEBUG o.a.i.d.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+218  [main] DEBUG o.a.i.d.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+218  [main] DEBUG o.a.i.d.pooled.PooledDataSource - PooledDataSource forcefully closed/removed all connections.
+257  [main] INFO  cn.mybatis.test.MybatisTest - ------test01方法开始执行--------------
+265  [main] DEBUG o.a.i.t.jdbc.JdbcTransaction - Opening JDBC Connection
+533  [main] DEBUG o.a.i.d.pooled.PooledDataSource - Created connection 105751207.
+534  [main] DEBUG o.a.i.t.jdbc.JdbcTransaction - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@64da2a7]
+536  [main] DEBUG c.mybatis.dao.CityMapper.selectCity - ==>  Preparing: select * from city where id = ? 
+559  [main] DEBUG c.mybatis.dao.CityMapper.selectCity - ==> Parameters: 2(Integer)
+593  [main] DEBUG c.mybatis.dao.CityMapper.selectCity - <==      Total: 1
+594  [main] INFO  cn.mybatis.test.MybatisTest - City [ID=2, Name=Qandahar, CountryCode=AFG, District=Qandahar, Population=237500]
+595  [main] DEBUG o.a.i.t.jdbc.JdbcTransaction - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@64da2a7]
+596  [main] DEBUG o.a.i.t.jdbc.JdbcTransaction - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@64da2a7]
+596  [main] DEBUG o.a.i.d.pooled.PooledDataSource - Returned connection 105751207 to pool.
+257  [main] INFO  cn.mybatis.test.MybatisTest - ------test01方法开始执行--------------
+538  [main] DEBUG c.mybatis.dao.CityMapper.selectCity - ==>  Preparing: select * from city where id = ? 
+563  [main] DEBUG c.mybatis.dao.CityMapper.selectCity - ==> Parameters: 2(Integer)
+588  [main] DEBUG c.mybatis.dao.CityMapper.selectCity - <==      Total: 1
+589  [main] INFO  cn.mybatis.test.MybatisTest - City [ID=2, Name=Qandahar, CountryCode=AFG, District=Qandahar, Population=237500]

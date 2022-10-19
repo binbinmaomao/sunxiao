@@ -1,0 +1,30 @@
+package cn.tulingxueyuan.mapper;
+
+import cn.tulingxueyuan.pojo.city;
+import cn.tulingxueyuan.pojo.cityExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface cityMapper {
+    long countByExample(cityExample example);
+
+    int deleteByExample(cityExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(city row);
+
+    int insertSelective(city row);
+
+    List<city> selectByExample(cityExample example);
+
+    city selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("row") city row, @Param("example") cityExample example);
+
+    int updateByExample(@Param("row") city row, @Param("example") cityExample example);
+
+    int updateByPrimaryKeySelective(city row);
+
+    int updateByPrimaryKey(city row);
+}

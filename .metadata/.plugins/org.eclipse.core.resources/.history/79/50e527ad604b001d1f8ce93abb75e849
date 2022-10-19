@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mybatis.dao.CityMapper">
+<!--     单表查询
+	<resultMap type="cn.mybatis.pojo.City" id="cityMap">
+	    property: javabean 的成员变量 
+	         column:数据库的カラム
+	         映射
+		<id property="uid" column="id"/>
+	
+	</resultMap>
+    根据id查询City实体
+     
+    <select id="selectCity" resultType="cn.mybatis.pojo.City">
+        select * from city where id = #{uid} and name =#{name}
+    </select>
+   
+    <select id="selectCity" resultMap="cityMap">
+        select * from city where id = #{uid} and name =#{name}
+    </select>
+    
+    City实体count
+    <select id="cityCount" resultType="long">
+    	select count(*) from city
+    </select>
+    
+    <insert id="cityInsert">
+    	insert into world.city (Name,CountryCode,District,Population)  values(#{Name},#{CountryCode},#{District},#{Population});
+    </insert>
+    insert into world.city  values(#{Name},#{CountryCode},#{District},#{Population});
+    
+    <update id="cityUpdate">
+    	update city set Name = #{Name} where ID =#{id}
+    </update>
+    
+
+	查询City实体
+    <select id="selectCity2" resultType="cn.mybatis.pojo.City">
+        select * from city where id = #{id} and name =#{name}
+    </select>
+    
+    查询City实体
+    <select id="selectCity3" resultType="cn.mybatis.pojo.City">
+        select * from city where name = #{list[0]} or name = #{list[1]}
+    </select>
+    -->  
+ <!-- 多表查询 -->
+<!--  	<resultMap type="cn.mybatis.pojo.CitycountryLanguageDTO" id="dto">
+ 		<id column="id" property="id"></id>
+        <result column="Name" property="Name"></result>
+        <result column="CountryCode" property="CountryCode"></result>
+        <result column="District" property="District"></result>
+        <result column="Population" property="Population"></result>
+        <result column="CountryCode" property="cl.CountryCode"></result>
+        <result column="Language" property="cl.Language"></result>
+        <result column="IsOfficial" property="cl.IsOfficial"></result>
+        <result column="Percentage" property="cl.Percentage"></result>
+ 	</resultMap> -->
+ 	<resultMap type="cn.mybatis.pojo.CountryLanguage" id="checkCount">
+ 		<id column="CountryCode" property="CountryCode"></id>
+       	<result column="Language" property="Language"></result>
+       	<result column="IsOfficial" property="IsOfficial"></result>
+       	<result column="Percentage" property="Percentage"></result>
+  	</resultMap>
+ 	
+ 	
+ 	
+<!--  	<resultMap type="cn.mybatis.pojo.CitycountryLanguageDTO" id="dto">
+ 		<id column="id" property="id"></id>
+        <result column="Name" property="Name"></result>
+        <result column="CountryCode" property="CountryCode"></result>
+        <result column="District" property="District"></result>
+        <result column="Population" property="Population"></result>
+        <association property="countryLanguage" javaType="cn.mybatis.pojo.CountryLanguage">
+        	<id column="CountryCode" property="CountryCode"></id>
+        	<result column="Language" property="Language"></result>
+        	<result column="IsOfficial" property="IsOfficial"></result>
+        	<result column="Percentage" property="Percentage"></result>
+        </association>
+     </resultMap> -->
+     
+     <resultMap type="cn.mybatis.pojo.CitycountryLanguageDTO" id="dto">
+ 		<id column="id" property="id"></id>
+        <result column="Name" property="Name"></result>
+        <result column="CountryCode" property="CountryCode"></result>
+        <result column="District" property="District"></result>
+        <result column="Population" property="Population"></result>
+        <association property="countryLanguage" resultMap="checkCount">
+        </association>
+     </resultMap> 
+     
+	<select id="sunxiaobin" resultMap="dto">
+		select * from world.city  left join world.countrylanguage on city.CountryCode = world.countrylanguage.CountryCode where id = #{id}
+	</select>
+	
+	<resultMap type="cn.mybatis.pojo.CityLanguageDTo" id="citylang">
+ 		<id column="id" property="id"></id>
+        <result column="Name" property="Name"></result>
+        <result column="CountryCode" property="CountryCode"></result>
+        <result column="District" property="District"></result>
+        <result column="Population" property="Population"></result>
+        <collection property="countryLanguage" javaType="java.util.List" ofType="cn.mybatis.pojo.CountryLanguage">
+        	<result column="CountryCode" property="CountryCode"></result>
+	       	<result column="Language" property="Language"></result>
+	       	<result column="IsOfficial" property="IsOfficial"></result>
+	       	<result column="Percentage" property="Percentage"></result>
+        </collection>
+     </resultMap> 
+	<select id="xiaobinsun" resultMap="citylang">
+		select * from world.city  left join world.countrylanguage on city.CountryCode = world.countrylanguage.CountryCode where id = #{id}
+	</select>
+	<!-- ↑↑↑↑↑↑↑↑↑↑以上是嵌套结果查询 -->
+	<!-- ↓↓↓↓↓↓↓↓↓以下是嵌套查询-->
+	
+	<resultMap type="cn.mybatis.pojo.CityLanguageDTo" id="citylanglong">
+ 		<id column="id" property="id"></id>
+        <result column="Name" property="Name"></result>
+        <result column="CountryCode" property="CountryCode"></result>
+        <result column="District" property="District"></result>
+        <result column="Population" property="Population"></result>
+        <collection property="countryLanguage" select="countrylan" column="CountryCode">
+        </collection>
+     </resultMap> 
+     
+     <select id="XXlan" resultMap="citylanglong">
+      select * from world.city where 1=1
+      <if test="id !=null">
+      	and world.city.id=#{id}
+      </if>
+      <if test="name =!null">
+      	and world.city.name=#{name}
+      </if>
+        
+     </select>
+     <select id="countrylan" resultMap="checkCount">
+       select * from world.countrylanguage where world.countrylanguage.countrycode=#{id}
+     </select>
+	
+	
+	
+</mapper>

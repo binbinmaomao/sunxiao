@@ -1,0 +1,20 @@
+package snippet;
+
+public class Snippet {
+	<!DOCTYPE 生成器配置 PUBLIC
+	 "-//mybatis.org//DTD MyBatis 生成器配置1.0//EN"
+	 "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+	<发电机配置>
+	  <context id="simple" targetRuntime="MyBatis3Simple">
+	    <jdbcConnection driverClass="org.hsqldb.jdbcDriver"
+	        connectionURL="jdbc:hsqldb:mem:aname" />
+	
+	    <javaModelGenerator targetPackage="example.model" targetProject="src/main/java"/>
+	
+	    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="example.mapper" targetProject="src/main/java"/>
+	
+	    <table tableName="FooTable" />
+	  </上下文>
+	</generatorConfiguration>
+}
+

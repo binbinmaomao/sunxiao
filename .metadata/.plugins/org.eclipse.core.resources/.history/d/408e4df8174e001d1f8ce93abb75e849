@@ -1,0 +1,7 @@
+application:
+  name: mybatis09
+  package: mybatis09.mybatis09
+spring:
+  application:
+    name: ${application.name}
+
