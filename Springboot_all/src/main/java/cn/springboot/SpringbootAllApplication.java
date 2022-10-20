@@ -1,12 +1,10 @@
 package cn.springboot;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Profile;
+
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
