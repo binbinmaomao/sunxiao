@@ -32,14 +32,13 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="mybatis09"/>
-			<item value="mybatis09.mybatis09"/>
+			<item value="org.Springboot01"/>
 		</list>
 		<list key="groupId">
-			<item value="mybatis09"/>
+			<item value="cn.test"/>
 		</list>
 		<list key="artifactId">
-			<item value="mybatis09"/>
+			<item value="Springboot01"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -55,10 +54,23 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="cn.test"/>
+			<item value="cn.sun"/>
+			<item value="cn.springboot"/>
+			<item value="SpringTest"/>
 		</list>
 		<list key="name">
+			<item value="cn.sun"/>
+			<item value="cn.test"/>
+			<item value="SpringTest"/>
 		</list>
 		<list key="artifactId">
+			<item value="Springboot01"/>
+			<item value="cn.test"/>
+			<item value="cn.sun"/>
+			<item value="Springboot_all"/>
+			<item value="SpringTest"/>
+			<item value="s"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -73,6 +85,14 @@
 		</list>
 	</section>
 	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
 	</section>
 	<section name="org.eclipse.m2e.core.pom.dependencies">
 	</section>
@@ -80,6 +100,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\20220718\【Java高级开发工程师-徐庶】\SpringBoot\springboot_parent"/>
 			<item value="C:\workspace\Springboot_all"/>
 			<item value="D:\20220718\【Java高级开发工程师-徐庶】\MyBatis\01-mybatis_helloworld"/>
 			<item value="D:\20220718\springDay09"/>
@@ -93,5 +114,25 @@
 			<item value="[groupId].[artifactId]-[version]"/>
 			<item value="[name]"/>
 		</list>
+	</section>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+			<item value="Springboot01"/>
+			<item value="s"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.wizards.MavenProjectSelectionDialog">
+		<item key="width" value="480"/>
+		<item key="height" value="450"/>
+		<item key="x" value="761"/>
+		<item key="y" value="187"/>
 	</section>
 </section>
