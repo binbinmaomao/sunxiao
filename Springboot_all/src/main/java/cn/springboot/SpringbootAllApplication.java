@@ -38,6 +38,7 @@ public class SpringbootAllApplication {
 		   
 		   2，使用注解加载
 		   @PropertySource("app.properties")
+		   aaaaaaaaaaaaaaaaaaaaa
 		 */
 //		Properties ps= new Properties();
 //		InputStream inStream = SpringbootAllApplication.class.getClassLoader().getResourceAsStream("app.properties");
